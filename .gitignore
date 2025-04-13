@@ -5,7 +5,7 @@
 # build related
 bin
 jcore/target
-japi/target
+bedwars/target
 
 *.zip
 
