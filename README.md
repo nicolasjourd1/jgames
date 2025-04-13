@@ -2,7 +2,7 @@
 A collection of minigame plugins for Minecraft running on a single server.
 
 ## Supported languages
-JGames currently supports **French (fr_FR)** and **English (en_US)**. Default is French, you can change the `lang` option in the `config.yml` 
+JGames currently supports **French (fr_FR)** and **English (en_US)**. The default is French, you can change the `lang` option in the `config.yml` 
 of JCore. Error messages are in English.
 
 ## Using
@@ -22,7 +22,7 @@ Alternatively, each plugin can be compiled separately using Maven in its directo
 directory, alongside `src`.
 
 ### Connecting to the database
-The database must be set up in JAPI's `config.yml` file (`plugins/JAPI/config.yml`). In the following format :
+The database must be set up in the JCore `config.yml` file (`plugins/JCore/config.yml`). In the following format :
 ```yaml
 db:
   user: "user"
