@@ -11,12 +11,13 @@ upper_case_name="$1"
 lower_case_name=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 dir=$lower_case_name
 
-echo "[ Creating '$upper_case_name' in $dir ]"
 
 if [ -d $dir ]; then
     echo "error: $dir directory already exists"
     exit 1
 fi
+
+echo "[ Creating '$upper_case_name' in $dir ]"
 
 echo "Creating $dir..."
 mkdir $dir

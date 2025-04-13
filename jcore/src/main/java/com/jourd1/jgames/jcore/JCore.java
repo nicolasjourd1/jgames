@@ -4,6 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.jourd1.jgames.japi.JAPI;
+import com.jourd1.jgames.jbedwars.JBedWars;
+import com.jourd1.jgames.jcore.events.JEvents;
 
 public class JCore extends JavaPlugin {
 
@@ -17,6 +19,8 @@ public class JCore extends JavaPlugin {
         } else {
             japi.hello();
         }
+
+        JEvents jEvents = new JEvents(this);
     }
 
     @Override
