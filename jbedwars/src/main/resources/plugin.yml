@@ -3,3 +3,7 @@ main: com.jourd1.jgames.jbedwars.JBedWars
 description: desc
 version: ${project.version}
 api-version: 1.21.4
+commands:
+  menu:
+    description: Ouvre le menu personnalisé
+    usage: /menu

@@ -9,11 +9,15 @@ public class JBedWars extends JavaPlugin {
     public void onEnable() {
         getLogger().info("Hello, SpigotMC!");
 
-        JBedWarsGame jBedWarsGame = new JBedWarsGame((JavaPlugin) getServer().getPluginManager().getPlugin("JCore"));
+        JBedWarsGame jBedWarsGame = new JBedWarsGame(this);
+        
+        // Commande de l'ouverture du menu
+        getCommand("menu").setExecutor(jBedWarsGame);
     }
 
     @Override
     public void onDisable() {
         getLogger().info("See you again, SpigotMC!");
+
     }
 }
