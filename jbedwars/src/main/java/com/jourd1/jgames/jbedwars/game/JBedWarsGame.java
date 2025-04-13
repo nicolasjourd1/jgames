@@ -28,12 +28,15 @@ public class JBedWarsGame extends JGame implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
-            if (label.equals("menu")) {
-                Player player = (Player) sender;
-                player.openInventory(configMenu.getInventory());
-            }
+
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("Player only command.");
+            return true; // console does not need to the command usage
         }
-        return false;
+
+        Player player = (Player) sender;
+        player.openInventory(configMenu.getInventory());
+
+        return true;
     }
 }

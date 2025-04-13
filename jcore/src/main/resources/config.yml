@@ -1,4 +1,4 @@
-lang: 'fr_FR'
+lang: "fr_FR"
 db:
   user: "user"
   password: "password"
