@@ -1,0 +1,5 @@
+name: JCore
+main: com.jourd1.jgames.jcore.JCore
+description: desc
+version: ${project.version}
+api-version: 1.21.4

@@ -1,0 +1,12 @@
+# editor specific
+.idea
+.vscode
+
+# build related
+bin
+jcore/target
+japi/target
+
+# server related
+server/*
+!server/start.sh
