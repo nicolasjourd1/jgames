@@ -11,4 +11,6 @@ for i in "${!dirs[@]}"; do
     cp ./${dirs[i]}/target/${jars[i]} ./bin/
 done
 
-cp ./bin/*.jar server/plugins
+if [ -d "server/plugins" ]; then
+    cp ./bin/*.jar server/plugins
+fi
