@@ -2,7 +2,7 @@ package com.jourd1.jgames.jbedwars.game;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.jourd1.jgames.japi.jgame.JGame;
+import com.jourd1.jgames.jcore.jgame.JGame;
 
 public class JBedWarsGame extends JGame {
 

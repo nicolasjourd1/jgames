@@ -1,5 +1,0 @@
-name: JAPI
-main: com.jourd1.jgames.japi.JAPI
-description: desc
-version: ${project.version}
-api-version: 1.21.4

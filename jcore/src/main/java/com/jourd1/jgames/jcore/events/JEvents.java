@@ -1,8 +1,10 @@
 package com.jourd1.jgames.jcore.events;
 
+import org.bukkit.event.Listener;
+
 import com.jourd1.jgames.jcore.JCore;
 
-public class JEvents {
+public class JEvents implements Listener {
 
     JCore jcore;
 

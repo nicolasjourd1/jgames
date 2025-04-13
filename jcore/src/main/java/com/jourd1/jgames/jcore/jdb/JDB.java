@@ -1,17 +1,16 @@
-package com.jourd1.jgames.japi.jdb;
+package com.jourd1.jgames.jcore.jdb;
 
-import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
-import com.jourd1.jgames.japi.JAPI;
+import com.jourd1.jgames.jcore.JCore;
 
 public class JDB {
 
-    private JAPI japi;
+    private JCore jcore;
 
     static Connection connection;
 
@@ -19,14 +18,16 @@ public class JDB {
     private String password;
     private String url;
 
-    public JDB(JAPI japi) {
-        this.japi = japi;
+    public JDB(JCore plugin) {
+        this.jcore = plugin;
 
-        FileConfiguration config = japi.getConfig();
+        FileConfiguration config = plugin.getConfig();
 
         url = config.getString("db.url");
         password = config.getString("db.password");
         user = config.getString("db.user");
+
+        plugin.getLogger().info("Connecting to the database...");
 
         try {
             connection = DriverManager.getConnection(url, user, password);
@@ -35,11 +36,8 @@ public class JDB {
         }
 
         if (connection != null) {
-            japi.getLogger().info("Successfully connected to the database !");
+            plugin.getLogger().info("Successfully connected to the database !");
         }
-
-        
-
     }
 
     public void disconnect() {

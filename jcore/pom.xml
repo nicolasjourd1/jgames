@@ -31,20 +31,6 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
-        <!-- JAPI -->
-        <dependency>
-            <groupId>com.jourd1.jgames.japi</groupId>
-            <artifactId>JAPI</artifactId>
-            <version>0.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- JBedWars -->
-        <dependency>
-            <groupId>com.jourd1.jgames.jbedwars</groupId>
-            <artifactId>JBedWars</artifactId>
-            <version>0.1</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
 

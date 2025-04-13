@@ -7,7 +7,7 @@ bin
 jcore/target
 japi/target
 
-release.zip
+*.zip
 
 # server related
 server/*

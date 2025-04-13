@@ -3,8 +3,8 @@
 rm bin/*.jar
 mkdir -p bin
 
-declare -a dirs=("japi" "jcore" "jbedwars")
-declare -a jars=("JAPI-*.jar" "JCore-*.jar" "JBedWars-*.jar")
+declare -a dirs=("jcore" "jbedwars")
+declare -a jars=("JCore-*.jar" "JBedWars-*.jar")
 
 for i in "${!dirs[@]}"; do
     mvn clean install -f "${dirs[i]}/pom.xml"

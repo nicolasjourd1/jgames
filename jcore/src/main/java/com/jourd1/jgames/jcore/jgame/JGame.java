@@ -1,4 +1,4 @@
-package com.jourd1.jgames.japi.jgame;
+package com.jourd1.jgames.jcore.jgame;
 
 public abstract class JGame {
 
