@@ -1,6 +1,10 @@
 # JGames
 A collection of minigame plugins for Minecraft running on a single server.
 
+## Supported languages
+JGames currently supports **French (fr_FR)** and **English (en_US)**. Default is French, you can change the `lang` option in the `config.yml` 
+of JCore. Error messages are in English.
+
 ## Using
 To use the plugins, you'll need a Minecraft 1.21.4 Spigot server. Also, a database is required by JAPI. Games can be launched without setting up a database, but nothing is saved.
 

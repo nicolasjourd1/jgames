@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.jourd1.jgames.jcore.events.JEvents;
 import com.jourd1.jgames.jcore.jdb.JDB;
+import com.jourd1.jgames.jcore.jlang.JLang;
 
 public class JCore extends JavaPlugin {
 
@@ -20,8 +21,12 @@ public class JCore extends JavaPlugin {
 
         init();
 
-        JEvents jEvents = new JEvents(this);
+        JEvents jevents = new JEvents(this);
         JDB jdb = new JDB(this);
+        JLang jlang = new JLang(this);
+
+        getLogger().info(jlang.getMessage("UNKNOWN_COMMAND"));
+        getLogger().info(jlang.getMessage("PERMISSION_DENIED"));
     }
 
     @Override
