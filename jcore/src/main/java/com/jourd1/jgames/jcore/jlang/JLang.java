@@ -68,7 +68,12 @@ public class JLang {
     }
 
     public String getMessage(String path) {
-        return translationMap.get(path);
+        String message = translationMap.get(path);
+        if (message == null) {
+            return String.format("(%s)", path);
+        } else {
+            return message;
+        }
     }
 
 }

@@ -1,7 +1,5 @@
 package com.jourd1.jgames.jcore.commands;
 
-import org.bukkit.command.CommandExecutor;
-
 import com.jourd1.jgames.jcore.JCore;
 
 public class JCommands {
@@ -11,7 +9,7 @@ public class JCommands {
     public JCommands(JCore jcore) {
         this.jcore = jcore;
 
-        jcore.getCommand("").setExecutor(new JPlayerCommands(jcore));
+        jcore.getCommand("heal").setExecutor(new JPlayerCommands(this.jcore));
     }
 
 }

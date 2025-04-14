@@ -1,2 +1,11 @@
-UNKNOWN_COMMAND: "Commande inconnue."
+INCORRECT_COMMAND: "Commande incorrecte."
+
 PERMISSION_DENIED: "Vous n'avez pas la permission de faire cela."
+PLAYER_ONLY_COMMAND: "Commande réservée aux joueurs."
+PLAYER_NOT_FOUND: "Le joueur %s n'existe pas."
+PLAYER_OFFLINE: "Le joueur %s n'est pas connecté."
+
+PLAYER_HEAL_SENDER: "Le joueur %s a été soigné."
+PLAYER_HEAL_TARGET: "Vous avez été soigné."
+
+UNKNOWN_COMMAND: "Commande inconnue."

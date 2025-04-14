@@ -31,7 +31,7 @@ public class JBedWarsGame extends JGame implements CommandExecutor {
 
         if (!(sender instanceof Player)) {
             sender.sendMessage("Player only command.");
-            return true; // console does not need to the command usage
+            return true; // no need to display the command usage to the console
         }
 
         Player player = (Player) sender;

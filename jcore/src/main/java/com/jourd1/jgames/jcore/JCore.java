@@ -6,6 +6,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.jourd1.jgames.jcore.commands.JCommands;
 import com.jourd1.jgames.jcore.events.JEvents;
 import com.jourd1.jgames.jcore.jdb.JDB;
 import com.jourd1.jgames.jcore.jlang.JLang;
@@ -14,6 +15,7 @@ public class JCore extends JavaPlugin {
 
     private FileConfiguration config;
     private File configFile;
+    private JLang jlang;
 
     @Override
     public void onEnable() {
@@ -21,9 +23,10 @@ public class JCore extends JavaPlugin {
 
         init();
 
-        JEvents jevents = new JEvents(this);
-        JDB jdb = new JDB(this);
-        JLang jlang = new JLang(this);
+        new JEvents(this);
+        new JDB(this);
+        new JCommands(this);
+        jlang = new JLang(this);
 
         getLogger().info(jlang.getMessage("UNKNOWN_COMMAND"));
         getLogger().info(jlang.getMessage("PERMISSION_DENIED"));
@@ -52,6 +55,14 @@ public class JCore extends JavaPlugin {
 
     public void loadConfig() {
         // TODO
+    }
+
+    public FileConfiguration getConfig() {
+        return this.config;
+    }
+
+    public JLang getLang() {
+        return jlang;
     }
 
 }
