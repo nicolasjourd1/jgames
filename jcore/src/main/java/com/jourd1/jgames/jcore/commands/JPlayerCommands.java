@@ -1,6 +1,7 @@
 package com.jourd1.jgames.jcore.commands;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.command.Command;
@@ -83,12 +84,15 @@ public class JPlayerCommands implements CommandExecutor {
 
             Inventory menu = Bukkit.createInventory(null, size, "Spec Menu");
 
-            // Ajouter les joueurs dans le menu (si besoin)
+            // Afficher les joueurs dans le menu
             int slot = 0;
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                // Exclure les joueurs en mode spectateur
+                if (onlinePlayer.getGameMode() == GameMode.SPECTATOR) continue;
+
                 if (slot < size - 9) {
                     ItemStack head = JItemBuilder.createPlayerHead(onlinePlayer);
-                    menu.setItem(slot, head); // ← C’est ça qui manquait !
+                    menu.setItem(slot, head);
                     slot++;
                 }
             }
@@ -128,7 +132,7 @@ public class JPlayerCommands implements CommandExecutor {
                 ItemStack slimeBall = new ItemStack(Material.SLIME_BALL);
                 ItemMeta slimeBallMeta = slimeBall.getItemMeta();
                 if (slimeBallMeta != null) {
-                    slimeBallMeta.setDisplayName("Retour au menu");
+                    slimeBallMeta.setDisplayName("Config");
                     slimeBall.setItemMeta(slimeBallMeta);
                 }
                 menu.setItem(size - 5, slimeBall);
@@ -148,7 +152,7 @@ public class JPlayerCommands implements CommandExecutor {
                 ItemStack slimeBall = new ItemStack(Material.SLIME_BALL);
                 ItemMeta slimeBallMeta = slimeBall.getItemMeta();
                 if (slimeBallMeta != null) {
-                    slimeBallMeta.setDisplayName("Retour au menu");
+                    slimeBallMeta.setDisplayName("Config");
                     slimeBall.setItemMeta(slimeBallMeta);
                 }
                 menu.setItem(size - 5, slimeBall);
