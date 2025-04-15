@@ -4,13 +4,15 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import com.jourd1.jgames.jcore.JCore;
 
+/**
+ * Handles translations et language management.
+ */
 public class JLang {
 
     private final static String[] _supportedLanguages = { "fr_FR", "en_US" };
@@ -18,6 +20,10 @@ public class JLang {
 
     private HashMap<String, String> translationMap = new HashMap<String, String>();
 
+    /**
+     * Constructeur de la classe JLang.
+     * @param jcore
+     */
     public JLang(JCore jcore) {
         String defaultLangFilePath = "lang/fr_FR.yml";
         File defaultLangFile = new File(jcore.getDataFolder(), defaultLangFilePath);
@@ -67,6 +73,11 @@ public class JLang {
         }
     }
 
+    /**
+     * Renvoie un message traduit.
+     * @param path
+     * @return
+     */
     public String getMessage(String path) {
         String message = translationMap.get(path);
         if (message == null) {
