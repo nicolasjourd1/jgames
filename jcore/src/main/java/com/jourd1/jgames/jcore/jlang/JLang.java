@@ -11,18 +11,21 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import com.jourd1.jgames.jcore.JCore;
 
 /**
- * Handles translations et language management.
+ * Translation handler class
  */
 public class JLang {
 
+    // Supported languages
     private final static String[] _supportedLanguages = { "fr_FR", "en_US" };
     private final static List<String> supportedLanguages = Arrays.asList(_supportedLanguages);
 
+    // TODO make this a YAML configuration to allow nesting in lang .yml files
     private HashMap<String, String> translationMap = new HashMap<String, String>();
 
     /**
-     * Constructeur de la classe JLang. Effectue un chargement des traductions à partir du fichier de langue par défaut.
-     * @param jcore 
+     * JLang constructor
+     * 
+     * @param jcore Reference to the JCore plugin
      */
     public JLang(JCore jcore) {
         String defaultLangFilePath = "lang/fr_FR.yml";
@@ -74,9 +77,10 @@ public class JLang {
     }
 
     /**
-     * Renvoie un message traduit.
-     * @param path
-     * @return
+     * Get the desired string in the current language
+     * 
+     * @param path Path to the desired string
+     * @return Path to the desired string if the string cant be found
      */
     public String getMessage(String path) {
         String message = translationMap.get(path);

@@ -21,7 +21,7 @@ public class JCore extends JavaPlugin {
     private JLang jlang;
 
     /**
-     * Methode appellée lors de l'activation du plugin
+     * Plugin startup logic
      */
     @Override
     public void onEnable() {
@@ -39,7 +39,7 @@ public class JCore extends JavaPlugin {
     }
 
     /**
-     * Methode appellée lors du désactivation du plugin
+     * Plugin shutdown logic
      */
     @Override
     public void onDisable() {

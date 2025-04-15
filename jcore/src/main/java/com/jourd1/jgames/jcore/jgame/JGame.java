@@ -5,14 +5,26 @@ package com.jourd1.jgames.jcore.jgame;
  */
 public abstract class JGame {
 
-    private String name = "defaultJGameName";
+    /*
+     * Game name, to be overridden by child class
+     */
+    private String name = "JGame";
+
+    /**
+     * Game maximum number of players
+     */
     private int playerCap = 2;
+
+    /**
+     * Game player count
+     */
     private int playerCount = 0;
 
     /**
-     * Constructeur de la classe JGame.
-     * @param name
-     * @param playerCap
+     * JGame constructor
+     * 
+     * @param name      Game name
+     * @param playerCap Game maximum number of players
      */
     public JGame(String name, int playerCap) {
         this.name = name;
@@ -20,34 +32,31 @@ public abstract class JGame {
     }
 
     /**
-     * Renvoie le nom du jeu.
-     * @return
+     * @return Game name
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * Renvoie la capacité de joueurs du jeu.
-     * @return
+     * @return Game maximum number of players
      */
     public int getPlayerCap() {
         return playerCap;
     }
 
     /**
-     * Renvoie le nombre de joueurs dans le jeu.
-     * @return
+     * @return Game player count
      */
     public int getPlayerCount() {
         return playerCount;
     }
 
     /**
-     * Ajoute un joueur au jeu.
+     * "[name] (playerCount/playerCap)"
      */
     public String toString() {
-        return "[" + getName() + "] " + "(" + getPlayerCount() + "/" + getPlayerCap() + ")";
+        return String.format("[%s] (%d/%d)", name, playerCount, playerCap);
     }
 
 }

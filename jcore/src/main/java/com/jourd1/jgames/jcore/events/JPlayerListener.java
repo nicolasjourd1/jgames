@@ -6,23 +6,19 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 /**
- * Classe permettant de gerer les events des joueurs
+ * JCore player related events listener
  */
 public class JPlayerListener implements Listener {
 
-    /**
-     * Event qui modifie le message de connexion lorsque un nouveau joueur arrive sur le serveur
-     * @param event
-     */
+    // TODO make join/quit message lang dependant
+
+    // Join message
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         event.setJoinMessage("[§b+§r] §a" + event.getPlayer().getDisplayName());
     }
 
-    /**
-     * Event qui modifie le message de deconnexion lorsque un joueur quitte le serveur
-     * @param event
-     */
+    // Quit message
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event) {
         event.setQuitMessage("[§4-§r] §c" + event.getPlayer().getName());

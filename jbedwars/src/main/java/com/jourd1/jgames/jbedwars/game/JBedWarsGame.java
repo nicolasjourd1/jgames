@@ -1,6 +1,7 @@
 package com.jourd1.jgames.jbedwars.game;
 
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -12,50 +13,72 @@ import com.jourd1.jgames.jcore.jgame.JGame;
 import com.jourd1.jgames.jcore.jmenu.JItemBuilder;
 import com.jourd1.jgames.jcore.jmenu.JMenu;
 
+/**
+ * JBedWarsGame class which manages a single game at once. Main plugin class
+ * manages all the games.
+ */
 public class JBedWarsGame extends JGame implements CommandExecutor {
 
-    JBedWars plugin;
-    private JMenu configMenu; 
+    /**
+     * Reference to the JBedWars Plugin
+     */
+    JBedWars jbedwars;
+
+    /*
+     * BedWars game menu
+     */
+    private JMenu menu;
 
     /**
-     * Création d'une partie de Bedwars
-     * @param plugin Le plugin JBedWars
-     * @param name Le nom du jeu
-     * @param playerCap Le nombre maximum de joueurs autorisé
-     * @param lobby La pièce de départ des joueurs
-     * @param plugin Le plugin JBedWars
+     * BedWars game configuration menu
      */
-    public JBedWarsGame(JBedWars plugin) {
+    private JMenu configMenu;
+
+    /**
+     * JBedWarsGame constructor
+     * 
+     * @param jbedwars Reference to the JBedWars plugin
+     */
+    public JBedWarsGame(JBedWars jbedwars) {
+        // Calling JGame super constructor
         super("JBedWars", 4);
-        this.plugin = plugin;
 
-        // Création du menu
-        this.configMenu = new JMenu("Bedwars §l§g> §l§eConfig", 36, true, plugin);
+        // Reference to the JBedWars plugin
+        this.jbedwars = jbedwars;
 
-        // Item de démarrage de la partie
-        JItemBuilder.createItem(configMenu, 10, Material.DIAMOND_SWORD, "§aDémarrer", "§7Clique ici pour lancer la partie.");
+        // JBedWarsGame menu creation
+        // TODO Add unique IDs to games => name contains ID
+        String menuName = ChatColor.translateAlternateColorCodes('&', this.getName());
+        this.menu = new JMenu(menuName, 36, true, this.jbedwars);
 
-        plugin.getLogger().info(this.toString());
+        // JBedWarsGame config menu creation
+        String configMenuName = ChatColor.translateAlternateColorCodes('&', this.getName() + "> Config");
+        this.configMenu = new JMenu(configMenuName, 36, true, this.jbedwars);
+
+        // TODO Create menu (for players) and config menu (for host/op)
+
+        // Add items to the menu
+        JItemBuilder.createItem(menu, 10, Material.DIAMOND_SWORD, "§aDémarrer", "§7Clique ici pour lancer la partie.");
+
+        // TODO Make a more verbose log when creating a game
+        this.jbedwars.getLogger().info(this.toString());
     }
 
     /**
-     * Quand un joueur tape la commande /bedwars
-     *
-     * @param sender Le joueur qui tape la commande
-     * @param command La commande utilisée
-     * @param label Le label de la commande
-     * @param args Les arguments de la commande
+     * Command handling for /bedwars
      */
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (!(sender instanceof Player)) {
             sender.sendMessage("Player only command.");
-            return true; // no need to display the command usage to the console
+            return true; // No need to display the command usage to the console
         }
 
+        // TODO add multiple options depending on user (op/host or player)
+
         Player player = (Player) sender;
-        player.openInventory(configMenu.getInventory());
+        player.openInventory(menu.getInventory());
 
         return true;
     }

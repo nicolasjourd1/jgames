@@ -5,30 +5,26 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.jourd1.jgames.jbedwars.game.JBedWarsGame;
 
 /**
- * Plugin BedWars pour le jeu de bedwars
+ * JGames bedwars plugin
  */
 public class JBedWars extends JavaPlugin {
 
     /**
-     * Méthode appelée lors de l'activation du plugin
+     * Plugin startup logic
      */
     @Override
     public void onEnable() {
-        getLogger().info("Hello, SpigotMC!");
-
+        // BedWars game
         JBedWarsGame jBedWarsGame = new JBedWarsGame(this);
         
-        // Commande de l'ouverture du menu
+        // Command handler binding
         getCommand("menu").setExecutor(jBedWarsGame);
-        getCommand("specmenu").setExecutor(jBedWarsGame);
     }
 
     /**
-     * Méthode appelée lors du désactivation du plugin
+     * Plugin shutdown logic
      */
     @Override
     public void onDisable() {
-        getLogger().info("See you again, SpigotMC!");
-
     }
 }

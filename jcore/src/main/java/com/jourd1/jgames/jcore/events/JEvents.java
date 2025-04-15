@@ -5,15 +5,16 @@ import org.bukkit.event.Listener;
 import com.jourd1.jgames.jcore.JCore;
 
 /**
- * Classe permettant de gerer les events.
+ * JCore event listener
  */
 public class JEvents implements Listener {
 
     JCore jcore;
 
     /**
-     * Constructeur de la classe JEvents.
-     * @param jcore
+     * JEvents constructor
+     * 
+     * @param jcore Reference to the JCore plugin
      */
     public JEvents(JCore jcore) {
         this.jcore = jcore;

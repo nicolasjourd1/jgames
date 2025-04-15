@@ -7,6 +7,3 @@ commands:
   menu:
     description: Ouvre le menu personnalisé
     usage: /menu
-    specmenu:
-    description: Ouvre le menu de spectateur
-    usage: /specmenu

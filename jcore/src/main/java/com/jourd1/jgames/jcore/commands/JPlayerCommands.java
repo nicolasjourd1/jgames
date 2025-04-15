@@ -18,10 +18,13 @@ import com.jourd1.jgames.jcore.JCore;
 import com.jourd1.jgames.jcore.jmenu.JItemBuilder;
 
 /**
- * Classe permettant de gerer la verification des messages d'erreurs et de commandes dans le plugin JCore.
+ * JCore player related command handler
  */
 public class JPlayerCommands implements CommandExecutor {
 
+    /*
+     * Reference to the JCore plugin
+     */
     JCore jcore;
 
     public JPlayerCommands(JCore jcore) {
@@ -29,7 +32,7 @@ public class JPlayerCommands implements CommandExecutor {
     }
 
     /**
-     * Méthode qui est appelée lorsque une commande est lancéee par un joueur
+     * Command handler for /heal, /specmenu
      */
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -43,23 +46,23 @@ public class JPlayerCommands implements CommandExecutor {
 
         if (!player.isOp()) {
             player.sendMessage(jcore.getLang().getMessage("PERMISSION_DENIED"));
-            return true; /* no need to display the command usage to a non-op player */
+            return true; /* No need to display the command usage to a non-op player */
         }
 
-        // Gestion de la commande /heal
+        // /heal command handling
         if (command.getName().equalsIgnoreCase("heal")) {
             switch (args.length) {
                 case 0:
                     player.setHealth(player.getAttribute(Attribute.MAX_HEALTH).getValue());
                     player.sendMessage(jcore.getLang().getMessage("PLAYER_HEAL_TARGET"));
-                    return true; /* success : command sender is healed */
+                    return true; /* Command sender is healed */
                 case 1:
                     String targetName = args[0];
                     Player target = Bukkit.getPlayer(targetName);
                     if (target == null) {
                         player.sendMessage(String.format(jcore.getLang().getMessage("PLAYER_OFFLINE"),
                                 targetName));
-                        return true; /* command usage was fine, target was wrong */
+                        return true; /* Target was wrong */
                     } else {
                         target.setHealth(target.getAttribute(Attribute.MAX_HEALTH).getValue());
                         target.sendMessage(jcore.getLang().getMessage("PLAYER_HEAL_TARGET"));
@@ -68,26 +71,32 @@ public class JPlayerCommands implements CommandExecutor {
                                     String.format(jcore.getLang().getMessage("PLAYER_HEAL_SENDER"), player.getName()),
                                     targetName);
                         }
-                        return true; /* success : healded target */
+                        return true; /* Healed target */
                     }
                 default:
                     player.sendMessage(jcore.getLang().getMessage("INCORRECT_COMMAND"));
-                    return false;
+                    return false; // Incorrect usage
+                // TODO make command usage vary with lang (ie not use the usage from
+                // plugin.yml)
             }
         }
 
-        // Gestion de la commande /specmenu
+        // /specmenu command handling
         if (command.getName().equalsIgnoreCase("specmenu")) {
-            // Calcul de la taille du menu en fonction du nombre de joueurs
+            // Calculate menu size depending on player count
+            // FIXME this bloc code currently does nothing
+            // TODO count only in game players / players from the same game => command
+            // handling might move to JGame
             int playerCount = Bukkit.getOnlinePlayers().size();
             int size =  36;
 
+            // TODO use JMenu class
             Inventory menu = Bukkit.createInventory(null, size, "Spec Menu");
 
-            // Afficher les joueurs dans le menu
+            // Add players to the menu
             int slot = 0;
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                // Exclure les joueurs en mode spectateur
+                // Exclude player in spectator mode
                 if (onlinePlayer.getGameMode() == GameMode.SPECTATOR) continue;
 
                 if (slot < size - 9) {
@@ -99,7 +108,7 @@ public class JPlayerCommands implements CommandExecutor {
 
             // Décoration spécifique si plus de 27 joueurs
             if (playerCount > 27) {
-                // Ajout de la décoration de la dernière ligne
+                // Bottom decoration
                 for (int i = (size - 9); i < size; i++) {
                     ItemStack blackGlass = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
                     ItemMeta blackGlassMeta = blackGlass.getItemMeta();
@@ -110,7 +119,7 @@ public class JPlayerCommands implements CommandExecutor {
                     menu.setItem(i, blackGlass);
                 }
 
-                // Flèche gauche (2e case de la dernière ligne)
+                // Left arrow (bottom 2nd slot)
                 ItemStack leftArrow = new ItemStack(Material.PLAYER_HEAD);
                 SkullMeta leftArrowMeta = (SkullMeta) leftArrow.getItemMeta();
                 if (leftArrowMeta != null) {
@@ -119,7 +128,7 @@ public class JPlayerCommands implements CommandExecutor {
                 }
                 menu.setItem(size - 8, leftArrow);
 
-                // Flèche droite (8e case de la dernière ligne)
+                // Right arrow (bottom 8th slot)
                 ItemStack rightArrow = new ItemStack(Material.PLAYER_HEAD);
                 SkullMeta rightArrowMeta = (SkullMeta) rightArrow.getItemMeta();
                 if (rightArrowMeta != null) {
@@ -128,7 +137,7 @@ public class JPlayerCommands implements CommandExecutor {
                 }
                 menu.setItem(size - 2, rightArrow);
 
-                // Slime Ball (5e case de la dernière ligne)
+                // Slime ball (bottom 5th slot)
                 ItemStack slimeBall = new ItemStack(Material.SLIME_BALL);
                 ItemMeta slimeBallMeta = slimeBall.getItemMeta();
                 if (slimeBallMeta != null) {
@@ -141,14 +150,14 @@ public class JPlayerCommands implements CommandExecutor {
                     ItemStack blackGlass = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
                     ItemMeta blackGlassMeta = blackGlass.getItemMeta();
                     if (blackGlassMeta != null) {
-                        blackGlassMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES); // Cacher les attributs
+                        blackGlassMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
                         blackGlass.setItemMeta(blackGlassMeta);
                     }
                     menu.setItem(i, blackGlass);
                 }
 
 
-                // Slime Ball (5e case de la dernière ligne)
+                // Slime ball (bottom 5th slot)
                 ItemStack slimeBall = new ItemStack(Material.SLIME_BALL);
                 ItemMeta slimeBallMeta = slimeBall.getItemMeta();
                 if (slimeBallMeta != null) {
@@ -158,7 +167,7 @@ public class JPlayerCommands implements CommandExecutor {
                 menu.setItem(size - 5, slimeBall);
             }
 
-            // Ouvrir le menu pour le joueur
+            // Open the menu
             player.openInventory(menu);
 
             return true;
