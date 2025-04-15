@@ -9,6 +9,9 @@ import org.bukkit.entity.Player;
 
 import com.jourd1.jgames.jcore.JCore;
 
+/**
+ * Classe permettant de gerer la versification des messages d'erreurs et de commandes dans le plugin JCore.
+ */
 public class JPlayerCommands implements CommandExecutor {
 
     JCore jcore;
@@ -17,6 +20,9 @@ public class JPlayerCommands implements CommandExecutor {
         this.jcore = jcore;
     }
 
+    /**
+     * Méthode qui est appelée lorsque une commande est lancéee par un joueur
+     */
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 

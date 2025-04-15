@@ -21,8 +21,8 @@ public class JLang {
     private HashMap<String, String> translationMap = new HashMap<String, String>();
 
     /**
-     * Constructeur de la classe JLang.
-     * @param jcore
+     * Constructeur de la classe JLang. Effectue un chargement des traductions à partir du fichier de langue par défaut.
+     * @param jcore 
      */
     public JLang(JCore jcore) {
         String defaultLangFilePath = "lang/fr_FR.yml";

@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
 /**
- * Classe permettant de créer un menu d'inventaire avec un nom, une taille spécifique et une option de décoration des bords.
+ * Classe permettant de créer un menu de jeu.
  */
 public class JMenu implements Listener {
 
@@ -24,6 +24,7 @@ public class JMenu implements Listener {
      * @param nameGame
      * @param menuSize
      * @param decorated
+     * @param plugin
      */
     public JMenu(String nameGame, int menuSize, boolean decorated,Plugin plugin) {
         this.nameGame=nameGame;
@@ -87,6 +88,10 @@ public class JMenu implements Listener {
         return menu;
     }
 
+    /**
+     * Event qui empeche les joueurs de recupere un item sur le menu.
+     * @param event
+     */
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         if (event.getView().getTopInventory().equals(menu)) {

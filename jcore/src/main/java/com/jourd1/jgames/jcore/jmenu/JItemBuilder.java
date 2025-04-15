@@ -7,10 +7,13 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+/**
+ * Classe permettant de cree un item avec son nom, le slot de l'inventaire, son material et sa description.
+ */
 public class JItemBuilder {
 
     /**
-     * Classe permettant de créer un item avec son nom, le slot de l'inventaire, son material et sa description.
+     * Cree un item dans un menu.
      * @param menu
      * @param slot
      * @param material

@@ -18,13 +18,12 @@ public class JBedWarsGame extends JGame implements CommandExecutor {
     private JMenu configMenu; 
 
     /**
-     * Constructeur
-     *
+     * Création d'une partie de Bedwars
      * @param plugin Le plugin JBedWars
      * @param name Le nom du jeu
      * @param playerCap Le nombre maximum de joueurs autorisé
      * @param lobby La pièce de départ des joueurs
-     * @param plugin
+     * @param plugin Le plugin JBedWars
      */
     public JBedWarsGame(JBedWars plugin) {
         super("JBedWars", 4);

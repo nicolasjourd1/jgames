@@ -8,6 +8,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 import com.jourd1.jgames.jcore.JCore;
 
+/**
+ * Handles database connection
+ */
 public class JDB {
 
     private JCore jcore;
@@ -18,6 +21,10 @@ public class JDB {
     private String password;
     private String url;
 
+    /**
+     * Constructeur de la classe JDB
+     * @param plugin
+     */
     public JDB(JCore plugin) {
         this.jcore = plugin;
 
@@ -40,6 +47,9 @@ public class JDB {
         }
     }
 
+    /**
+     * Déconnexion de la base de données
+     */
     public void disconnect() {
         try {
             if (connection != null && !connection.isClosed()) {

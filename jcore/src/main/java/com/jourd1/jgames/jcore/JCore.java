@@ -11,12 +11,18 @@ import com.jourd1.jgames.jcore.events.JEvents;
 import com.jourd1.jgames.jcore.jdb.JDB;
 import com.jourd1.jgames.jcore.jlang.JLang;
 
+/**
+ * Main class
+ */
 public class JCore extends JavaPlugin {
 
     private FileConfiguration config;
     private File configFile;
     private JLang jlang;
 
+    /**
+     * Methode appellée lors de l'activation du plugin
+     */
     @Override
     public void onEnable() {
         getLogger().info("Hello, SpigotMC!");
@@ -32,16 +38,25 @@ public class JCore extends JavaPlugin {
         getLogger().info(jlang.getMessage("PERMISSION_DENIED"));
     }
 
+    /**
+     * Methode appellée lors du désactivation du plugin
+     */
     @Override
     public void onDisable() {
         getLogger().info("See you again, SpigotMC!");
     }
 
+    /**
+     * Initialisation du plugin et chargement des configurations et langues
+     */
     public void init() {
         setupConfig();
         loadConfig();
     }
 
+    /**
+     * Initialisation du fichier de configuration
+     */
     public void setupConfig() {
 
         configFile = new File(this.getDataFolder(), "config.yml");
@@ -53,14 +68,23 @@ public class JCore extends JavaPlugin {
         config = YamlConfiguration.loadConfiguration(configFile);
     }
 
+    /**
+     * Chargement des configurations et langues
+     */
     public void loadConfig() {
         // TODO
     }
 
+    /**
+     * Récupération de la configuration courante
+     */
     public FileConfiguration getConfig() {
         return this.config;
     }
 
+    /**
+     * Récupération de la langue courante
+     */
     public JLang getLang() {
         return jlang;
     }
