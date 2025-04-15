@@ -17,6 +17,7 @@ public class JCommands {
         this.jcore = jcore;
 
         jcore.getCommand("heal").setExecutor(new JPlayerCommands(this.jcore));
+        jcore.getCommand("specmenu").setExecutor(new JPlayerCommands(this.jcore));
     }
 
 }

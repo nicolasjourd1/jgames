@@ -33,7 +33,7 @@ public class JBedWarsGame extends JGame implements CommandExecutor {
         this.configMenu = new JMenu("Bedwars §l§g> §l§eConfig", 36, true, plugin);
 
         // Item de démarrage de la partie
-        JItemBuilder.create(configMenu, 10, Material.DIAMOND_SWORD, "§aDémarrer", "§7Clique ici pour lancer la partie.");
+        JItemBuilder.createItem(configMenu, 10, Material.DIAMOND_SWORD, "§aDémarrer", "§7Clique ici pour lancer la partie.");
 
         plugin.getLogger().info(this.toString());
     }

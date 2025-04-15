@@ -20,6 +20,7 @@ public class JBedWars extends JavaPlugin {
         
         // Commande de l'ouverture du menu
         getCommand("menu").setExecutor(jBedWarsGame);
+        getCommand("specmenu").setExecutor(jBedWarsGame);
     }
 
     /**

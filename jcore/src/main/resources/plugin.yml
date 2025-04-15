@@ -7,3 +7,6 @@ commands:
   heal:
     description: Heal player
     usage: /heal [player]
+  specmenu:
+    description: Ouvre le menu de spectateur
+    usage: /specmenu
