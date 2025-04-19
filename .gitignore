@@ -10,4 +10,4 @@ jbedwars/target
 *.zip
 
 # server related
-server/*
+server
