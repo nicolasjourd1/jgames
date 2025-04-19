@@ -68,8 +68,8 @@ public class JPlayerCommands implements CommandExecutor {
                         target.sendMessage(jcore.getLang().getMessage("PLAYER_HEAL_TARGET"));
                         if (!target.equals(player)) {
                             player.sendMessage(
-                                    String.format(jcore.getLang().getMessage("PLAYER_HEAL_SENDER"), player.getName()),
-                                    targetName);
+                                    String.format(jcore.getLang().getMessage("PLAYER_HEAL_SENDER"),
+                                    targetName));
                         }
                         return true; /* Healed target */
                     }
