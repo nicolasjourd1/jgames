@@ -11,4 +11,3 @@ jbedwars/target
 
 # server related
 server/*
-!server/start.sh
