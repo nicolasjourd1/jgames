@@ -33,9 +33,6 @@ public class JCore extends JavaPlugin {
         new JDB(this);
         new JCommands(this);
         jlang = new JLang(this);
-
-        getLogger().info(jlang.getMessage("UNKNOWN_COMMAND"));
-        getLogger().info(jlang.getMessage("PERMISSION_DENIED"));
     }
 
     /**

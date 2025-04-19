@@ -2,4 +2,4 @@ lang: "fr_FR"
 db:
   user: "user"
   password: "password"
-  url: "url"
+  url: "jdbc:mysql://host.com:port/db_name"

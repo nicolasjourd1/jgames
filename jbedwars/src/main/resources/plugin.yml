@@ -2,6 +2,7 @@ name: JBedWars
 main: com.jourd1.jgames.jbedwars.JBedWars
 description: desc
 version: ${project.version}
+depend: [JCore]
 api-version: 1.21.4
 commands:
   menu:

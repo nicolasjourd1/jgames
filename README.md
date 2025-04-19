@@ -27,7 +27,7 @@ The database must be set up in the JCore `config.yml` file (`plugins/JCore/confi
 db:
   user: "user"
   password: "password"
-  url: "url" # e.g. jdbc:mysql://host.com:port/db_name
+  url: "jdbc:mysql://host.com:port/db_name" # example 
 ```
 
 

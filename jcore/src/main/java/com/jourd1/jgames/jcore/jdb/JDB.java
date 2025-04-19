@@ -60,7 +60,8 @@ public class JDB {
         try {
             connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
-            e.printStackTrace();
+            jcore.getLogger().severe("Could not connect to the database ! Did you configure it ?");
+            jcore.getLogger().severe("Add or verify your database credentials in plugins/JCore/config.yml");
         }
 
         if (connection != null) {

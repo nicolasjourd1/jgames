@@ -1,6 +1,9 @@
 package com.jourd1.jgames.jbedwars.game;
 
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -46,22 +49,24 @@ public class JBedWarsGame extends JGame implements CommandExecutor {
         // Reference to the JBedWars plugin
         this.jbedwars = jbedwars;
 
+        // Menu name
+        String rawMenuName = this.getName() + " #" + this.getID();
+        String menuName = ChatColor.translateAlternateColorCodes('&', rawMenuName);
+
         // JBedWarsGame menu creation
-        // TODO Add unique IDs to games => name contains ID
-        String menuName = ChatColor.translateAlternateColorCodes('&', this.getName());
         this.menu = new JMenu(menuName, 36, true, this.jbedwars);
 
         // JBedWarsGame config menu creation
-        String configMenuName = ChatColor.translateAlternateColorCodes('&', this.getName() + "> Config");
+        String configMenuName = ChatColor.translateAlternateColorCodes('&', menuName + "> Config");
         this.configMenu = new JMenu(configMenuName, 36, true, this.jbedwars);
-
-        // TODO Create menu (for players) and config menu (for host/op)
 
         // Add items to the menu
         JItemBuilder.createItem(menu, 10, Material.DIAMOND_SWORD, "§aDémarrer", "§7Clique ici pour lancer la partie.");
 
         // TODO Make a more verbose log when creating a game
-        this.jbedwars.getLogger().info(this.toString());
+        this.jbedwars.getLogger().setLevel(Level.FINEST);
+        this.jbedwars.getLogger().fine(String.format("Created game #%d", this.getID()));
+
     }
 
     /**

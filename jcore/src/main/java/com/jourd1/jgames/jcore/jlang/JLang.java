@@ -57,7 +57,6 @@ public class JLang {
             FileConfiguration translations = YamlConfiguration.loadConfiguration(defaultLangFile);
             for (String translation : translations.getKeys(false)) {
                 translationMap.put(translation, translations.getString(translation));
-                jcore.getLogger().info(translation + ": " + translationMap.get(translation));
             }
         } else {
             File configLangFile = new File(jcore.getDataFolder(), configLangFilePath);
@@ -71,7 +70,6 @@ public class JLang {
             FileConfiguration translations = YamlConfiguration.loadConfiguration(configLangFile);
             for (String translation : translations.getKeys(false)) {
                 translationMap.put(translation, translations.getString(translation));
-                jcore.getLogger().info(translation + ": " + translationMap.get(translation));
             }
         }
     }
