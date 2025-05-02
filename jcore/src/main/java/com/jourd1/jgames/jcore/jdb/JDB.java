@@ -62,6 +62,7 @@ public class JDB {
         } catch (SQLException e) {
             jcore.getLogger().severe("Could not connect to the database ! Did you configure it ?");
             jcore.getLogger().severe("Add or verify your database credentials in plugins/JCore/config.yml");
+            e.printStackTrace();
         }
 
         if (connection != null) {
